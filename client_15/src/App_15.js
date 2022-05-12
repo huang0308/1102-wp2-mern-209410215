@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 //import { Landing_15 } from "./pages/Landing_15";
 import { Landing_15, Dashboard_15, Register_15, Error_15} from './pages';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 
 function App_15() {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Logo_15,FormRow_15 } from "../components/";
+import { Logo_15,FormRow_15 } from "../components";
 import Wrapper from "../assets/wrappers/Register_15";
 
 import {useAppContext} from '../context/appContext_15';

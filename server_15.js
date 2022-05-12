@@ -9,16 +9,24 @@ const app = express();
 import dotenv from 'dotenv';
 dotenv.config();
 
+//db and authenticateUser
 import connectDB_15 from './db/connect_15.js' ;
+
+//routes
+import authRoutes_15 from './routes/authRoutes_15.js';
 
 //middleware
 import notFoundMiddleware_15 from './middleware/not-found_15.js';
 import errorHandlerMiddleware_15 from './middleware/error-handler_15.js';
 
+app.use(express.json());
+
 app.get('/', (req, res)=>{
-   throw new Error('testing for error');
+   //throw new Error('testing for error');
    res.send('Welcome Huang0308 209410215');
 });
+
+app.use('/api/v1/auth_15',authRoutes_15);
 
 app.use(notFoundMiddleware_15);
 app.use(errorHandlerMiddleware_15);
