@@ -19,8 +19,8 @@ const Register_15 = () => {
     const {showAlert, displayAlert}= useAppContext();
 
     const toggleMember = () => {
-      setValues( {...values, isMember: values.isMember } );
-    }
+      setValues( {...values, isMember: !values.isMember });
+    };
     const handleChange=(e)=>{
         console.log('e.target',e.target);
         setValues({...values,[e.target.name]:e.target.value})
@@ -43,7 +43,7 @@ const Register_15 = () => {
     <h3> {values.isMember? 'Login': 'Register'} </h3>
     {showAlert && <Alert_15/>}
     {/* name input*/}
-    {values.isMember && (
+    {!values.isMember && (
       <FormRow_15
       type="text"
       name='name'
