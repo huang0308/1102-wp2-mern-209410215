@@ -1,5 +1,10 @@
+import User_15 from "../models/User_15.js";
+
 const register_15 = async (req, res) => {
-    res.send('register user -- huang0308, 209410215');
+    console.log('body',req.body);
+    const  user = await User_15.create(req.body);
+    res.status(201).json({user});
+    //res.send('register user -- huang0308, 209410215');
 };
 
 const login_15 = async (req, res) => {
