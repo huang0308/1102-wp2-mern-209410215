@@ -1,9 +1,15 @@
 import User_15 from "../models/User_15.js";
 
-const register_15 = async (req, res) => {
+const register_15 = async (req, res, next) => {
+try {
     console.log('body',req.body);
     const  user = await User_15.create(req.body);
     res.status(201).json({user});
+} catch (err) {
+    //res.status(500).json({ msg: 'Error on registering user' });
+    next(err);
+}
+    
     //res.send('register user -- huang0308, 209410215');
 };
 
