@@ -12,7 +12,11 @@
 
     "scripts": {
 
-        "start": "node server_15.js",
+        "server": "nodemon server_15.js --ignore client_15",
+
+        "client": "npm start --prefix client_15",
+
+        "start": "concurrently --kill-others-on-fail \" npm run server \" \" npm run client \" ",
 
         "dev": "nodemon server_15.js"
 
@@ -63,6 +67,8 @@
     },
 
     "devDependencies": {
+
+        "concurrently": "^7.2.1",
 
         "nodemon": "^2.0.15"
 
