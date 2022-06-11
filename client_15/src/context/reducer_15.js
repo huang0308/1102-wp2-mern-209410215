@@ -1,4 +1,13 @@
-import { CLEAR_ALERT, DISPLAY_ALERT } from "./action_15"
+import { 
+    CLEAR_ALERT, 
+    DISPLAY_ALERT,
+    REGISTER_USER_BEGIN,
+    REGISTER_USER_SUCCESS, 
+    REGISTER_USER_ERROR, 
+    LOGIN_USER_BEGIN, 
+    LOGIN_USER_SUCCESS, 
+    LOGIN_USER_ERROR,
+} from "./action_15";
 
 const reducer_15 = (state, action) => {
    
@@ -10,6 +19,7 @@ const reducer_15 = (state, action) => {
             alertType: 'danger'
         }
     }
+
     if(action.type === CLEAR_ALERT){
         return{
             ...state,
@@ -18,7 +28,35 @@ const reducer_15 = (state, action) => {
             alertType:''
         }
     }
-      throw new Error(`no such action: ${action.type}`);
+
+    if( action.type === REGISTER_USER_BEGIN ){
+        return { ...state, isLoading: true };
+    }
+
+    if( action.type === REGISTER_USER_SUCCESS ){
+        return { 
+                ...state, 
+                isLoading: false,
+                showAlert: true,
+                alertText: action.payload.alertText,
+                alertType:'success',
+                user: action.payload.user,
+                token: action.payload.token,
+                location: action.payload.location,
+                 };
+    }
+
+    if( action.type === REGISTER_USER_ERROR ){
+        return { 
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType:'danger',
+            alertText: action.payload.msg,
+         };
+    }
+
+    throw new Error(`no such action: ${action.type}`);
 }
 
 export default reducer_15

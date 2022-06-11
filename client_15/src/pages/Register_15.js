@@ -22,7 +22,7 @@ const Register_15 = () => {
       setValues( {...values, isMember: !values.isMember });
     };
     const handleChange=(e)=>{
-        console.log('e.target',e.target);
+        //console.log('e.target',e.target);
         setValues({...values,[e.target.name]:e.target.value})
     }
 
@@ -30,12 +30,13 @@ const Register_15 = () => {
         e.preventDefault();
         const {name, email, password, isMember} = values;
         //console.log('e.target',e.target);
-        if(!email || !password || !isMember && !name){
+        if(!email || !password || (!isMember && !name)){
           displayAlert();
           return
         }
 
         const currentUser = {name, email, password};
+        console.log('from data', currentUser);
         if(!isMember){
           registerUser({
             currentUser,

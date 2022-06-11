@@ -21,9 +21,9 @@ const TestFetchUseProxy_15 = () => {
 
     const fetchData3 = async () => {
         const currentUser = {
-            "name":"huang03088",
-            "email":"2094102158@gms.tku.edu.tw",
-            "password":"secret8",
+            name:"huang",
+            email:"huang@gmail.com",
+            password:"00001234",
         };
     
         try {
@@ -35,7 +35,7 @@ const TestFetchUseProxy_15 = () => {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
     
     useEffect(() => {
         fetchDataLocal();
