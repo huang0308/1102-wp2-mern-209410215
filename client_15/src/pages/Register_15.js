@@ -16,7 +16,7 @@ const initialState={
 const Register_15 = () => {
     const [values,setValues]=useState(initialState);
     
-    const {showAlert, displayAlert, registerUser}= useAppContext();
+    const {showAlert, displayAlert, registerUser, loginUser}= useAppContext();
 
     const toggleMember = () => {
       setValues( {...values, isMember: !values.isMember });
@@ -32,7 +32,7 @@ const Register_15 = () => {
         //console.log('e.target',e.target);
         if(!email || !password || (!isMember && !name)){
           displayAlert();
-          return
+          return;
         }
 
         const currentUser = {name, email, password};
@@ -44,11 +44,14 @@ const Register_15 = () => {
             alertText:'User created! Redirecting...'
           });
         }else{
-          
-        }
+          loginUser({
+            currentUser,
+            endPoint: 'login_15',
+            alertText:'Login Successful! Redirecting...'
+        });
     }
+  }
   return (
-
     <Wrapper>
       <form className="form" onSubmit={onSubmit}>
     <Logo_15/>
@@ -93,6 +96,6 @@ const Register_15 = () => {
       </form>
     </Wrapper>
   )
-}
 
+}
 export default Register_15

@@ -56,6 +56,33 @@ const reducer_15 = (state, action) => {
          };
     }
 
+    if( action.type === LOGIN_USER_BEGIN ){
+        return { ...state, isLoading: true };
+    }
+
+    if( action.type === LOGIN_USER_SUCCESS ){
+        return { 
+                ...state, 
+                isLoading: false,
+                showAlert: true,
+                alertText: action.payload.alertText,
+                alertType:'success',
+                user: action.payload.user,
+                token: action.payload.token,
+                location: action.payload.location,
+                 };
+    }
+
+    if( action.type === LOGIN_USER_ERROR ){
+        return { 
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType:'danger',
+            alertText: action.payload.msg,
+         };
+    }
+
     throw new Error(`no such action: ${action.type}`);
 }
 

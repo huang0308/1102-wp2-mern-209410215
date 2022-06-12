@@ -77,8 +77,47 @@ const AppProvider_15= ({children})=>{
           clearAlert();
     };
 
+    const axiosLogin = async ({ currentUser, endPoint, alertText }) => {
+        try {
+          const { data } = await axios.post(
+            `/api/v1/auth_15/${endPoint}`,
+            currentUser
+          );
+          // console.log('login data', data);
+          return data;
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+    const loginUser = async ({ currentUser, endPoint, alertText}) => {
+        dispatch({ type: LOGIN_USER_BEGIN });
+        try {
+            const data = await axiosLogin({
+              currentUser,
+              endPoint,
+              alertText,
+            });
+            console.log('login data', data);
+            //const { user, token, location } = data;
+            //dispatch({
+            //  type: LOGIN_USER_SUCCESS,
+            //  payload: { user, token, location, alertText }
+            // });
+          } catch (error) {
+            console.log(error.response);
+            dispatch({
+              type: LOGIN_USER_ERROR,
+              payload: { msg: error.response.data.msg },
+            });
+          }
+          clearAlert();
+    }
+
     return(
-        <AppContext_15.Provider value={{...state,displayAlert,clearAlert,registerUser}}>
+        <AppContext_15.Provider 
+        value={{...state,displayAlert,clearAlert,
+        registerUser, loginUser }}>
         {children}
         </AppContext_15.Provider>
     )

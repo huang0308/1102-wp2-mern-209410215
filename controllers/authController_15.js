@@ -21,8 +21,11 @@ const register_15 = async (req, res, next) => {
     //res.send('register user -- huang0308, 209410215');
 };
 
-const login_15 = async (req, res) => {
-    res.send('login user -- huang0308, 209410215');
+const login_15 = async (req, 
+    res) => {
+    console.log('body',req.
+    body);
+    res.json({msg: 'login user -- huang0308, 209410215'});
 };
 
 const updateUser_15 = async (req, res) => {
