@@ -52,4 +52,10 @@ UserSchema_15.methods.createJWT = function () {
     process.env.JWT_SECRET, {expiresIn: process.env.JWT_LIFETIME});
 };
 
+UserSchema_15.methods.comparePassword = async function(candidatePassword) {
+        const isMatch = await bcrypt.compare(candidatePassword, this.
+        password);
+        return isMatch;
+    };
+
 export default mongoose.model('User_15',UserSchema_15);
