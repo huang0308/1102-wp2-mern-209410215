@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
-import { Logo_15,FormRow_15 } from "../components";
+import { Logo_15,FormRow_15, Alert_15 } from "../components";
 import Wrapper from "../assets/wrappers/Register_15";
 
 import {useAppContext} from '../context/appContext_15';
-import Alert_15 from '../components/Alert_15';
+import { useNavigate } from 'react-router-dom';
 
 const initialState={
     name:"",
     email: '',
     password:'',
     isMember:true,
-    showAlert:false
 }
 
 const Register_15 = () => {
     const [values,setValues]=useState(initialState);
+    const navigate = useNavigate();
     
-    const {showAlert, displayAlert, registerUser, loginUser}= useAppContext();
+    const { user, isLoading,showAlert, displayAlert, registerUser, loginUser}= useAppContext();
 
     const toggleMember = () => {
       setValues( {...values, isMember: !values.isMember });
@@ -50,7 +50,16 @@ const Register_15 = () => {
             alertText:'Login Successful! Redirecting...'
         });
     }
-  }
+  };
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    }
+  }, [user, navigate]);
+  
   return (
     <Wrapper>
       <form className="form" onSubmit={onSubmit}>
