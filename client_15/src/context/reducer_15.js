@@ -7,7 +7,10 @@ import {
     LOGIN_USER_BEGIN, 
     LOGIN_USER_SUCCESS, 
     LOGIN_USER_ERROR,
+    LOGOUT_USER,
 } from "./action_15";
+
+import { initialState } from "./appContext_15";
 
 const reducer_15 = (state, action) => {
    
@@ -83,6 +86,13 @@ const reducer_15 = (state, action) => {
          };
     }
 
+    if (action.type === LOGOUT_USER){
+        return{
+            ...initialState, 
+            isLoading: false,
+            
+        };
+    }
     throw new Error(`no such action: ${action.type}`);
 }
 
