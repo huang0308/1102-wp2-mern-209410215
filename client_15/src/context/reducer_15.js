@@ -8,6 +8,7 @@ import {
     LOGIN_USER_SUCCESS, 
     LOGIN_USER_ERROR,
     LOGOUT_USER,
+    TOGGLE_SIDEBAR,
 } from "./action_15";
 
 import { initialState } from "./appContext_15";
@@ -90,7 +91,15 @@ const reducer_15 = (state, action) => {
         return{
             ...initialState, 
             isLoading: false,
-            
+
+        };
+    }
+
+    if (action.type === TOGGLE_SIDEBAR){
+        return{
+            ...state, 
+            showSidebar: !state.showSidebar,
+
         };
     }
     throw new Error(`no such action: ${action.type}`);
