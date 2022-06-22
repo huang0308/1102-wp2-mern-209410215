@@ -128,6 +128,10 @@ const AppProvider_15 = ({ children }) => {
     dispatch({ type: TOGGLE_SIDEBAR });
   };
 
+  const updateUser = async ({ name, email, lastName, location }) => {
+
+  };
+
   return (
     <AppContext_15.Provider
       value={{ ...state, 
